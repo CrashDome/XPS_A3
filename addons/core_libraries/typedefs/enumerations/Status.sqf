@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-TypeDef: core. XPS_enum_Status
+TypeDef: behaviour_trees. XPS_enum_Status
 	<TypeDefinition>
 		---prototype
 		XPS_enum_Status : XPS_ifc_IEnumeration, XPS_typ_Enumeration
@@ -46,14 +46,14 @@ Description:
 	["Enumerations", [["Success","SUCCESS"], ["Failure","FAILURE"], ["Running","RUNNING"]]]
 	/*----------------------------------------------------------------------------
 	Property: Values
-		<XPS_typ_Enumeration.Values>
+		<core.XPS_typ_Enumeration.Values>
 	-----------------------------------------------------------------------------*/
 	/*----------------------------------------------------------------------------
 	Method: GetEnum
-		<XPS_typ_Enumeration.GetEnum>
+		<core.XPS_typ_Enumeration.GetEnum>
 	-----------------------------------------------------------------------------*/
 	/*----------------------------------------------------------------------------
 	Method: IsDefined
-		<XPS_typ_Enumeration.IsDefined>
+		<core.XPS_typ_Enumeration.IsDefined>
 	-----------------------------------------------------------------------------*/
 ]
