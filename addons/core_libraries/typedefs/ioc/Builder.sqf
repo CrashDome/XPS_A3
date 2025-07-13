@@ -27,27 +27,19 @@ Returns:
     Constructor: #create
     
         --- prototype
-        call ["#create",_type, _arg*]
+        call ["#create",_type]
         ---
 
-    Parameters:
+    Paramters:
         _type - <Array> or <Hashmap> - that represents a <Type>
-        _args - <Anything> - the arguments passed to the constructor
 
 	Returns:
 		<True>
     ----------------------------------------------------------------------------*/
 	["#create", compileFinal {
-		if !(params [["_type",nil,[[],createhashmap]],["_args",[],[]]]) exitwith {
-            throw createhashmaobject [XPS_typ_InvalidArgumentException,[_self,"#create","Argument passed was not an array or valid hashmap(object)",_this]]};
-
-        _self set ["_object",createhashmapobject [_type, _args]];
+		params [["_type",nil,[[],createhashmap]]];
+        _self call ["New",_this];
 	}],
-	/*----------------------------------------------------------------------------
-	Flags: #flags
-		unscheduled
-	----------------------------------------------------------------------------*/
-	["#flags",["unscheduled"]],
 	/*----------------------------------------------------------------------------
 	Str: #str
 		--- prototype
@@ -55,23 +47,63 @@ Returns:
 		---
 	----------------------------------------------------------------------------*/
     ["#str",{_self get "#type" select 0}],
-    ["_object",nil],
+	/*----------------------------------------------------------------------------
+	Flags: #flags
+	----------------------------------------------------------------------------*/
+    /*----------------------------------------------------------------------------
+    Protected: typeDef
+    
+        --- prototype
+        get "typeDef"
+        ---
+	
+    Returns:
+        <Hashmap> - the current working typedefinition
+    ----------------------------------------------------------------------------*/
+    ["typeDef",nil],
+    /*----------------------------------------------------------------------------
+    Method: New
+    
+        --- prototype
+        call ["New",_type]
+        ---
+    
+	Paramters: 
+        _type - <Array> or <Hashmap> - that represents a <Type>
+	
+    Returns:
+        <HashmapObject> - this builder object
+    ----------------------------------------------------------------------------*/
+    ["New", compileFinal {
+        params [["_type",nil,[[],createhashmap]]];
+        if !(isNil "_type") then {
+            if (_type isEqualType []) then {
+                _self set ["typeDef",createhashmapfromarray _type];
+            } else {
+                _self set ["typeDef",+_type];
+            }
+        };
+        _self;
+    }],
     /*----------------------------------------------------------------------------
     Method: Build
     
         --- prototype
-        call ["Build"]
+        call ["Build",_args]
         ---
     
-	Parameters: 
-		None
+	Paramters: 
+		_args - <Anything> - arguments to be passed into the type definition constructor or []
 	
     Returns:
-        <HashmapObject> - an instance of the type provided in the constructor
+        <HashmapObject> - an instance of the type provided in the <#create>/<New> methods or nil
     ----------------------------------------------------------------------------*/
     ["Build", compileFinal {
-        private _obj = _self get "_object";
-        _self set ["_object",nil];
-        _obj;
+        params [["_args",[],[]]];
+        private _t = _self get "typeDef";
+        _self set ["typeDef",nil];
+        if (isNil "_t") then {nil} else {
+            createhashmapobject [_t,_args];
+        };
     }]
 ]

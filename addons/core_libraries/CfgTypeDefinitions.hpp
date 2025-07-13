@@ -10,7 +10,7 @@ class XPS_CFG_TD_BASECLASSNAME {
 			XPS_CFG_IFC_SUB(ioc,IServiceProvider);
 			XPS_CFG_IFC_SUB(delegates,IDelegate);
 			XPS_CFG_IFC_SUB(delegates,IEventHandler);
-			XPS_CFG_IFC_SUB(delegates,IEventRouter);
+			XPS_CFG_IFC_SUB(delegates,IEventBus);
 			XPS_CFG_IFC_SUB(collections,IList);
 			XPS_CFG_IFC_SUB(collections,ICollection);
 			XPS_CFG_IFC_SUB(collections,ICollectionNotifier);
@@ -32,7 +32,7 @@ class XPS_CFG_TD_BASECLASSNAME {
 			XPS_CFG_TYP_SUB(exceptions,InvalidOperationException);
 		};
 		class DependancyInjection {
-			XPS_CFG_ENUM_SUB(ioc,Builder);
+			XPS_CFG_TYP_SUB(ioc,Builder);
 			XPS_CFG_ENUM_SUB(ioc,LifeTime);
 			XPS_CFG_TYP_SUB(ioc,ServiceContainer);
 			XPS_CFG_TYP_SUB(ioc,ServiceProvider);
@@ -42,11 +42,12 @@ class XPS_CFG_TD_BASECLASSNAME {
 			XPS_CFG_TYP_SUB(delegates,MultiCastDelegate);
 			XPS_CFG_TYP_SUB(delegates,Event);
 			XPS_CFG_TYP_SUB(delegates,EventHandler);
-			XPS_CFG_TYP_SUB(delegates,EventRouter);
+			XPS_CFG_TYP_SUB(delegates,EventBus);
 
 		};
 		class Enumerations {
 			XPS_CFG_TYP_SUB(enumerations,Enumeration);
+			XPS_CFG_ENUM_SUB(enumerations,Status);
 		};
 		class Collections {
 			XPS_CFG_TYP_SUB(collections,CachedHashmap);
@@ -55,6 +56,7 @@ class XPS_CFG_TD_BASECLASSNAME {
 			XPS_CFG_TYP_SUB(collections,TypeCollection);
 			XPS_CFG_TYP_SUB(collections,TypeCollectionN);
 			XPS_CFG_TYP_SUB(collections,Queue);
+			XPS_CFG_TYP_SUB(collections,PriorityQueue);
 			XPS_CFG_TYP_SUB(collections,Stack);
 		};
 		class Searching {

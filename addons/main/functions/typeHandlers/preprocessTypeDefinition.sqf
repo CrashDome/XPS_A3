@@ -61,7 +61,7 @@ private _typeDef = _this;
 
 if (count _this == 1 && {_this#0 isEqualTypeAll []}) then {_typeDef = _this#0};
 
-_privateKeys = [_privateKeys,[]] select (isNil "_privateKeys");
+_privateKeys = if (isNil "_privateKeys") then {[]} else {_privateKeys};
 
 private _result = true;
 private _ctor = ""; 
@@ -103,20 +103,6 @@ try
 			if (_key == "#delete") then {_hasDtor = true};
 			if (_key == "Serialize") then {_hasSrlz = true};
 			if (_key == "Deserialize") then {_hasDesrlz = true};
-
-			// Convert Interface list of strings to hashmap with ref to interface
-			if (_key == "@interfaces") then {
-				if (_value isEqualType [] && {_value isEqualTypeAll ""}) then {
-					private _interfaces = createhashmap;
-					{
-						private _ifc = call compile _x;
-						if (isNil "_ifc") then  {throw format ["Cannot create interface: %1.",_x]};
-						_interfaces merge [createHashMapFromArray [[_x,_ifc]],true];
-					} forEach _value;
-					_value = compileFinal _interfaces;
-					_keyPair set [1,_value];
-				} else {throw format ["Interface list for Key @interfaces is not an array of strings."]};
-			};
 
 		private _attributes = [];
 		if (count _keyPair > 2) then {
@@ -194,7 +180,7 @@ try
 					};
 				};
 				case "NESTED_TYPE" : {
-					if (isNil "_attParams") then {_attParams = [true, true, false]} else {
+					if (isNil "_attParams") then {_attParams = [true, true, true]} else {
 						if !(_attParams isEqualTypeAll true) then {throw  format ["Inner Type Attribute for Key %2 was %1. Expected Array of Booleans.",_attParams,_key]}
 					};
 
@@ -262,26 +248,17 @@ try
 		};
 
 		if (_value isEqualType {}) then {
-			private _final = isFinal _Value;
-			private _code = str _value;
-			//Replace Private Keys
-			{
-				private _find = _x#0;
-				private _replace = _x#1;
-				_code = [_find, _replace, _code] call xps_fnc_findReplaceKeyInCode;
-			} forEach _privateKeys;
-			
-			if (_final) then {
-				_keyPair set [1,compileFinal call compile _code]
-			} else {
-				_keyPair set [1,call compile _code]
+			//Replace Private Keys in any code block
+			if (count _privateKeys > 0) then {
+				_value = [_privateKeys,_value] call xps_fnc_findReplaceKeyInCode;
+				_keyPair set [1,_value];
 			};
 		};
 	};
 
 	//Build any nested types with current _privateKeys list
 	{
-		_typdef#_x set [1,createhashmapfromarray (_y call XPS_fnc_buildTypeDefinition)];
+		_typedef#_x set [1,createhashmapfromarray (_y call XPS_fnc_buildTypeDefinition)];
 	} foreach _nested;
 
 	_result;

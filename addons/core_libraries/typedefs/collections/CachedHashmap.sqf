@@ -44,9 +44,8 @@ Returns:
 	/*----------------------------------------------------------------------------
 	Flags: #flags
 		sealed
-		unscheduled
 	----------------------------------------------------------------------------*/
-	["#flags",["sealed","unscheduled"]],
+	["#flags",["sealed"]],
 	/*----------------------------------------------------------------------------
 	Implements: @interfaces
 		<XPS_ifc_IList>
@@ -138,7 +137,7 @@ Returns:
     
     Parameters: 
 		_key - <Anything> - the key which identifies what to retrieve from cache or source if not cached
-		_forceNew* - <Bool> - (Optional - Default : False) - passing true forces cache update on item.
+		_forceNew* - <Boolean> - (Optional - Default : False) - passing true forces cache update on item.
 
 	Returns:
 		<Anything> - removes and returns first element in the queue or nil if empty

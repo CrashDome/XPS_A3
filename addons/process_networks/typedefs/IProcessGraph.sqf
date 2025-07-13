@@ -1,23 +1,17 @@
-#include "script_component.hpp"
+#include "script_component.hpp" 
 /* ----------------------------------------------------------------------------
-Interface: core. XPS_ifc_IEventHandler
-<Interface>
-	--- prototype
-	XPS_ifc_IEventHandler
+Interface: process_network. XPS_PN_ifc_IProcessGraph
+	<Interface>
+	---prototype
+	XPS_PN_ifc_IProcessGraph
 	---
 
 Authors:
     Crashdome
 ----------------------------------------------------------------------------
-
-	Method: Subscribe
-		<code>
-
-	Method: Unsubscribe
-		<code>
-
+	Method: 
+		<Code>
 ---------------------------------------------------------------------------- */
 [
-	["Subscribe","CODE"],
-	["Unsubscribe","CODE"]
+	["ProcessNext","CODE"]
 ]
