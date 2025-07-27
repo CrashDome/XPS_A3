@@ -1,9 +1,9 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Interface: action_planning. htn. XPS_AP_ifc_ICompoundTask
+Interface: action_planning. XPS_AP_ifc_INode
 <Interface>
 	---prototype
-	XPS_AP_ifc_ICompoundTask : XPS_AP_ifc_INode
+	XPS_AP_ifc_INode
 	---
 
 Authors:
@@ -11,17 +11,9 @@ Authors:
 ----------------------------------------------------------------------------
 
 	Property: Name
-		<XPS_AP_ifc_INode.Name>
+		<String>
 
-	Property: Methods
-	<Array>
-        
-	Method: Precondition
-	<Code>
 ---------------------------------------------------------------------------- */
-
 [
-	["@",XPS_AP_ifc_INode],
-    ["Precondition","CODE"],
-	["Methods","ARRAY"]
+	["Name","STRING"]
 ]

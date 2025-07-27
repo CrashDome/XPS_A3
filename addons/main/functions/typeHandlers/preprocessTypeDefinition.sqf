@@ -13,7 +13,7 @@ Description:
     
 	Preprocesses and modifies a Type Definition array and alters the code based on the following:
 
-	Obfuscates the private Methods/Properties. 
+	Replaces the private Methods/Properties at runtime. 
 	
 	It also has support for "Attributes" of the Methods/Properties. You can classify an Attribute
 	by making it the third element of the Key/Value Pair. These Attributes do not exist once the 
@@ -201,7 +201,7 @@ try
 		};
 
 	if !(XPS_DebugMode) then {
-		// Finally record if a private key for later obfuscation
+		// Finally record if a private key for later replacement
 		if (_key isEqualType "" && {_key find "_" isEqualTo 0}) then {
 			private _uid = [8] call XPS_fnc_createUniqueID;
 			_privateKeys pushBack [_key,_uid];

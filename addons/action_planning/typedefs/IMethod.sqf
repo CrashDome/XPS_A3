@@ -10,14 +10,10 @@ Authors:
     Crashdome
 ----------------------------------------------------------------------------
 
-	Property: Precondition
+	Property: TryDecompose
 	<Code>
-        
-	Property: SubTasks
-	<Array>
 ---------------------------------------------------------------------------- */
 
 [
-    ["Precondition","CODE"],
-	["SubTasks","ARRAY"]
+    ["TryDecompose","CODE"]
 ]

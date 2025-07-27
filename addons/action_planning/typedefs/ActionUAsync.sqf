@@ -34,6 +34,24 @@ Returns:
 	-----------------------------------------------------------------------------*/
 	["@interfaces",["XPS_AP_ifc_IAction"]],
 	["_startTime",-1],
+	/*----------------------------------------------------------------------------
+	Protected: condition
+    
+    	--- Prototype --- 
+    	call ["condition",_context]
+    	---
+
+	Description:
+		The code that executes during a Tick of this node when processTick has already been called
+
+	Must be Overridden - This type contains no functionality
+
+	Parameters:
+		_context - <HashmapObject> or <hashmap> - typically a blackboard object that implements the <XPS_ifc_IBlackboard:core.XPS_ifc_IBlackboard> interface
+
+	Returns: 
+		<Boolean> - condition was ssatified
+	-----------------------------------------------------------------------------*/
 	["condition", compileFinal {true}],
 	["timeout",0],
 	/*----------------------------------------------------------------------------
@@ -59,9 +77,11 @@ Returns:
 				_self call ["preExecute",_this];
 				_self call ["action",_this];
 			};
-			case (diag_tickTime > ((_self get "timeout") + (_self get "_startTime")));
+			case (_self get "timeout" > 0 && {diag_tickTime > ((_self get "timeout") + (_self get "_startTime"))}): {
+				_self call ["Halt"];
+			};
 			case (_self call ["condition",_this]): {
-				_self call ["postExecute",_self call ["result",_this]];
+				_self call ["postExecute",XPS_Status_Success];
 			};
 		};
 	}]    

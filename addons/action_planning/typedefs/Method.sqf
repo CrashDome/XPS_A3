@@ -34,39 +34,23 @@ Returns:
 	-----------------------------------------------------------------------------*/
     ["@interfaces",["XPS_AP_ifc_IMethod"]],
 	/*----------------------------------------------------------------------------
-	Property: SubTasks
+	Method: TryDecompose
     
     	--- Prototype --- 
-    	get "SubTasks"
+    	call ["TryDecompose",[_context, _args*]]
     	---
 
 		<XPS_AP_ifc_IMethod>
     
-    Returns: 
-		<Array> - ordered list of usually other <XPS_AP_typ_CompoundTasks> or <XPS_AP_typ_PrimitiveTasks>
-	-----------------------------------------------------------------------------*/
-	["SubTasks",[]],
-	/*----------------------------------------------------------------------------
-	Method: Precondition
-    
-    	--- Prototype --- 
-    	call ["Precondition",_args*]
-    	---
+	Parameters:
+		_context - <HashmapObject> or <hashmap> - typically a blackboard object that implements the <XPS_ifc_IBlackboard:core.XPS_ifc_IBlackboard> interface
 
-        Alternative: 
-
-        --- code ---
-        get "Precondition"  //allows lazy execution
-        ---
-
-		<XPS_AP_ifc_IMethod>
-    
-    Parameters: 
+    Optionals: 
         _args* - (Optional) - <Anything> - arguments passed to condition when executed
 
     Returns: 
-		<Boolean> - True if satisfied, otherwise False
+		<Array> - of Tasks or Goals or nil if failure
 
 	-----------------------------------------------------------------------------*/
-    ["Precondition", {}]
+    ["TryDecompose", {}]
 ]

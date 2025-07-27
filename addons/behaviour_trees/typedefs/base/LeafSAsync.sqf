@@ -227,11 +227,9 @@ Returns:
 					_node call ["callback",_status]
 				};
 				_self set ["handle",_handle];
-			_self call ["postTick",_self get "Status"];
 		};
-		if (scriptDone (_self get "handle")) then {
-			_self set ["handle",nil];
-			_self call ["postTick",XPS_Status_Failure];
+		if (scriptDone (_self get "handle") && {_self get "Status" isEqualTo XPS_Status_Running}) then {
+			_self call ["Halt"];
 		};
 		_self get "Status";
 	}]

@@ -57,23 +57,6 @@ Returns:
 	-----------------------------------------------------------------------------*/
 	["condition",{true}],
 	/*----------------------------------------------------------------------------
-	Protected: result
-    
-    	--- Prototype --- 
-    	call ["result",_context]
-    	---
-
-	Description:
-		The code that executes during a Tick of this node when the condition has been met. Default is to simply return <Success:XPS_Status_Success>
-
-	Parameters:
-		_context - <HashmapObject> or <hashmap> - typically a blackboard object that implements the <XPS_ifc_IBlackboard:core.XPS_ifc_IBlackboard> interface
-
-	Returns: 
-		<Enumeration> - <XPS_Status_Success>, <XPS_Status_Failure>, or <XPS_Status_Running>
-	-----------------------------------------------------------------------------*/
-	["result",{XPS_Status_Success}],
-	/*----------------------------------------------------------------------------
 	Protected: timeout
     
     	--- Prototype --- 
@@ -240,9 +223,11 @@ Returns:
 				_self call ["preTick",_this];
 				_self call ["processTick",_this];
 			};
-			case (diag_tickTime > ((_self get "timeout") + (_self get "_startTime")));
+			case (_self get "timeout" > 0 && {diag_tickTime > ((_self get "timeout") + (_self get "_startTime"))}): {
+				_self call ["Halt"];
+			};
 			case (_self call ["condition",_this]): {
-				_self call ["postTick",_self call ["result",_this]];
+				_self call ["postTick",XPS_Status_Success];
 			};
 		};
 	}]
