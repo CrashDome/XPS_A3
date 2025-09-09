@@ -13,24 +13,16 @@ Authors:
 	Property: Name
 		<XPS_AP_ifc_INode.Name>
 
-	Method: Precondition
+	Method: GetOperator
 	<Code>
 
-	Method: Operation
-	<Code>
-    
-	Method: Effects
-	<Code>
-    
-	Method: Expected
+	Method: Evaluate
 	<Code>
         
 ---------------------------------------------------------------------------- */
 
 [
 	["@",XPS_AP_ifc_INode],
-    ["Precondition","CODE"],
-    ["Operation","CODE"],
-    ["Effects","CODE"],
-    ["Expected","CODE"]
+	["Operator","CODE"],
+    ["Evaluate","CODE"],
 ]

@@ -3,7 +3,7 @@
 TypeDef: action_planning. htn. XPS_AP_typ_PrimitiveTask
 	<TypeDefinition>
 		---prototype
-		XPS_AP_typ_PrimitiveTask : XPS_AP_ifc_IPrimitiveTask
+		XPS_AP_typ_PrimitiveTask : XPS_AP_ifc_INode, XPS_AP_ifc_IPrimitiveTask
 		---
     	--- Prototype --- 
     	createHashmapObject ["XPS_AP_typ_PrimitiveTask"]
@@ -13,9 +13,7 @@ Authors:
 	Crashdome
 
 Description:
-	A Method is a collection used in Heirarchical Task Networks which decompose 
-	into smaller subtasks based on a satisfied condition. These collections are usually 
-	found in a <XPS_AP_typ_PrimitiveTask> in order of priority.
+	An HTN Node which contains a single action <XPS_AP_typ_Operator>.
 
 Returns:
 	<HashmapObject> of a Method
@@ -34,50 +32,17 @@ Returns:
     	<XPS_AP_ifc_IPrimitiveTask>
 	-----------------------------------------------------------------------------*/
     ["@interfaces",["XPS_AP_ifc_IPrimitiveTask"]],
-
 	/*----------------------------------------------------------------------------
-	Method: Precondition
-    
-    	--- Prototype --- 
-    	call ["Precondition",_args*]
-    	---
-
-        Alternative: 
-
-        --- code ---
-        get "Precondition"  //allows lazy execution
-        ---
-
-		<XPS_AP_ifc_IPrimitiveTask>
-
-	Description:
-		Conditional check to see if task is a valid task to plan for.
-    
-    Parameters: 
-        _args* - (Optional) - <Anything> - arguments passed to Precondition when executed
-
-    Returns: 
-		<Boolean> - True if satisfied, otherwise False
-
-	-----------------------------------------------------------------------------*/
-    ["Precondition", {}],
-	/*----------------------------------------------------------------------------
-	Method: Operation
+	Method: GetOperator
     
     	--- Prototype --- 
     	call ["Operation",_args*]
     	---
 
-        Alternative: 
-
-        --- code ---
-        get "Operation"  //allows lazy execution
-        ---
-
 		<XPS_AP_ifc_IPrimitiveTask>
 
 	Description:
-		Code to execute to complete task.
+		Retrieves a clone of the underlying operator and optionally sets it's parameters.
 
     Parameters: 
         _args* - (Optional) - <Anything> - arguments passed to Operation when executed
@@ -86,7 +51,7 @@ Returns:
 		<Anything>
 
 	-----------------------------------------------------------------------------*/
-    ["Operation", {}],
+    ["GetOperator", {}],
 	/*----------------------------------------------------------------------------
 	Method: Effects
     

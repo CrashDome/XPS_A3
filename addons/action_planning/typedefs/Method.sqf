@@ -34,10 +34,10 @@ Returns:
 	-----------------------------------------------------------------------------*/
     ["@interfaces",["XPS_AP_ifc_IMethod"]],
 	/*----------------------------------------------------------------------------
-	Method: TryDecompose
+	Method: Decompose
     
     	--- Prototype --- 
-    	call ["TryDecompose",[_context, _args*]]
+    	call ["Decompose",[_context, _args*]]
     	---
 
 		<XPS_AP_ifc_IMethod>
@@ -49,8 +49,8 @@ Returns:
         _args* - (Optional) - <Anything> - arguments passed to condition when executed
 
     Returns: 
-		<Array> - of Tasks or Goals or nil if failure
+		<Array> - of <XPS_AP_ifc_INodes> or nil if failure
 
 	-----------------------------------------------------------------------------*/
-    ["TryDecompose", {}]
+    ["Decompose", {}]
 ]

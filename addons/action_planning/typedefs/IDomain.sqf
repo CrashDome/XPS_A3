@@ -16,8 +16,12 @@ Authors:
 	Method: GetNode
 		<code>
 
+	Method: AddNode
+		<code>
+
 ---------------------------------------------------------------------------- */
 [
 	["Name","STRING"],
+	["AddNode", "CODE"],
 	["GetNode","CODE"]
 ]

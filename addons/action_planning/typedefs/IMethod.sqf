@@ -10,10 +10,10 @@ Authors:
     Crashdome
 ----------------------------------------------------------------------------
 
-	Property: TryDecompose
+	Property: Decompose
 	<Code>
 ---------------------------------------------------------------------------- */
 
 [
-    ["TryDecompose","CODE"]
+    ["Decompose","CODE"]
 ]

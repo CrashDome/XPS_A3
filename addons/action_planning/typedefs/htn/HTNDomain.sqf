@@ -3,7 +3,7 @@
 TypeDef: action_planning. htn. XPS_AP_typ_HTNDomain
 	<TypeDefinition>
 	---prototype
-	XPS_AP_typ_HTNDomain : XPS_AP_ifc_HTNDomain
+	XPS_AP_typ_HTNDomain : XPS_AP_ifc_IDomain, XPS_AP_typ_Domain
 	---
 	---prototype
 	createhashmapobject [XPS_AP_typ_HTNDomain, [_name]]
@@ -29,6 +29,11 @@ Returns:
 [
 	["#type","XPS_AP_typ_HTNDomain"],
 	/*----------------------------------------------------------------------------
+	Parent: #base
+    	<XPS_AP_typ_Domain>
+	-----------------------------------------------------------------------------*/
+	["#base", XPS_AP_typ_Domain],
+	/*----------------------------------------------------------------------------
 	Constructor: #create
     
     	--- Prototype --- 
@@ -45,38 +50,43 @@ Returns:
 		<True>
 	-----------------------------------------------------------------------------*/
 	["#create", compileFinal {
-		params [["_name",nil,[""]]];
-		if !(isNil "_name") then {_self set ["Name",_name]};
-        _self set ["_nodes", createhashmapobject ["XPS_typ_TypeCollection",[createhashmapfromarray ["XPS_typ_HashmapObjectTypeRestrictor",["XPS_AP_typ_Operator","XPS_AP_typ_PrimitiveTask","XPS_AP_typ_CompoundTask"]]]]];
-	}],
+		params [["_name","(unnamed)",[""]],["_allowedTypes",["XPS_AP_typ_Operator","XPS_AP_typ_PrimitiveTask","XPS_AP_typ_CompoundTask"],[[]]]];
+		_self call ["XPS_typ_Domain.#create", [_name,_allowedTypes]];
+	}]
 	/*----------------------------------------------------------------------------
 	Str: #str
     	--- text --- 
-    	"XPS_AP_typ_HTNDomain"
+    	"XPS_AP_typ_HTNDomain:Name"
     	---
+		
+    	<XPS_AP_typ_Domain>
 	-----------------------------------------------------------------------------*/
-	["#str", compileFinal {(_self get "#type" select 0) + " : " + (_self get "Name")}],
 	/*----------------------------------------------------------------------------
-	Implements: @interfaces
-    	<XPS_AP_ifc_IDomain>
+	Property: Name
+    
+    	--- Prototype --- 
+    	get "Name"
+    	---
+
+		<XPS_AP_typ_Domain.Name>
 	-----------------------------------------------------------------------------*/
-	["@interfaces",["XPS_AP_ifc_IDomain"]],
-    //["#create"]
-    ["_nodes",createhashmap],
+    	/*----------------------------------------------------------------------------
+	Method: AddNode
+    
+    	--- Prototype --- 
+    	call ["AddNode", _nodes]
+    	---
 
-	["Name","(unnamed)"],
-    ["AddNode",{
-        if !(params [["_node",[],[[],createhashmap]]]) exitwith {false;};
-        
-		if !(_node isEqualType []) then {
-			_node = [_node];
-		};
+		<XPS_AP_typ_Domain.AddNode>
+	-----------------------------------------------------------------------------*/
 
-		{ 
-			_self get "_nodes"  call ["AddItem",[_x get "Name", _x]];
-		} foreach _node;
-    }],
-    ["GetNode",{
-		_self get "_nodes" call ["GetItem", _key];
-	}]
+    /*----------------------------------------------------------------------------
+	Method: GetNode
+    
+    	--- Prototype --- 
+    	call ["GetNode", _name]
+    	---
+
+		<XPS_AP_typ_Domain.GetNode>
+	-----------------------------------------------------------------------------*/
 ]
