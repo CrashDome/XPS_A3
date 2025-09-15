@@ -1,0 +1,86 @@
+/*%FSM<COMPILE "D:\SteamLibrary\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, test">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-40.348846,-151.162781,49.651154,-101.162781,0.000000,"Init"};
+item1[] = {"_",8,218,-40.802338,-59.700623,49.197662,-9.700623,0.000000,""};
+item2[] = {"Move",3,250,132.959229,-55.479645,222.959229,-5.479645,0.000000,"Move"};
+item3[] = {"_",4,218,128.048401,-152.814178,218.048401,-102.814178,0.000000,""};
+item4[] = {"_",1,4346,301.723389,-149.870514,391.723419,-99.870529,0.000000,""};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {3,4};
+globals[] = {0.000000,0,0,0,0,640,480,1,6,6316128,1,-379.730347,379.730011,82.677429,-344.886993,1032,581,1};
+window[] = {0,-1,-1,-32000,-32000,857,104,1544,104,1,1050};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "test";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Move";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Move">*/
+                class Move
+                {
+                        name = "Move";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"_leader setDestination [_destination, ""LEADER PLANNED"", true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_leader getVariable [""done"", false]"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "_">*/
+                class _
+                {
+                        name = "_";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "_",
+        };
+};
+/*%FSM</COMPILE>*/

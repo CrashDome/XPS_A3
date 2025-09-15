@@ -1,0 +1,219 @@
+version=1;
+class GraphItems
+{
+	class Item0
+	{
+		Flags=250;
+		BasicText="";
+		Left=-40.348846;
+		Top=-151.16278;
+		Right=49.651154;
+		Bottom=-101.16278;
+		BgColor=255;
+		class ItemInfo
+		{
+			Text="Init";
+			lStyle=-842150451;
+			Shape=6;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=700;
+			FontUnderline=1;
+			FontCharSet=0;
+			ItemType=0;
+			class ItemInfo
+			{
+				Id=1;
+			};
+		};
+	};
+	class Item1
+	{
+		Flags=218;
+		BasicText="";
+		Left=-40.802338;
+		Top=-59.700623;
+		Right=49.197662;
+		Bottom=-9.7006226;
+		BgColor=8421440;
+		class ItemInfo
+		{
+			Text="";
+			lStyle=-842150451;
+			Shape=2;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=8;
+			class ItemInfo
+			{
+				Id=2;
+			};
+		};
+	};
+	class Item2
+	{
+		Flags=250;
+		BasicText="";
+		Left=132.95923;
+		Top=-55.479645;
+		Right=222.95923;
+		Bottom=-5.4796448;
+		BgColor=16777215;
+		class ItemInfo
+		{
+			Text="Move";
+			lStyle=-842150451;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=3;
+			class ItemInfo
+			{
+				Id=3;
+				InitCode="_leader setDestination [_destination, ""LEADER PLANNED"", true];";
+			};
+		};
+	};
+	class Item3
+	{
+		Flags=218;
+		BasicText="";
+		Left=128.0484;
+		Top=-152.81418;
+		Right=218.0484;
+		Bottom=-102.81418;
+		BgColor=65535;
+		class ItemInfo
+		{
+			Text="";
+			lStyle=-842150451;
+			Shape=2;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=4;
+			class ItemInfo
+			{
+				Id=4;
+				Condition="_leader getVariable [""done"", false]";
+			};
+		};
+	};
+	class Item4
+	{
+		Flags=4346;
+		BasicText="";
+		Left=301.72339;
+		Top=-149.87051;
+		Right=391.72342;
+		Bottom=-99.870529;
+		BgColor=33023;
+		class ItemInfo
+		{
+			Text="";
+			lStyle=-842150451;
+			Shape=6;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=700;
+			FontCharSet=0;
+			ItemType=1;
+			class ItemInfo
+			{
+				Id=5;
+			};
+		};
+	};
+};
+class GraphLinks
+{
+	class Link0
+	{
+		From=0;
+		To=1;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link1
+	{
+		From=1;
+		To=2;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link2
+	{
+		From=2;
+		To=3;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link3
+	{
+		From=3;
+		To=4;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+};
+class Globals
+{
+	NextGroupID=1;
+	NextID=6;
+	FSMName="test";
+	CompileConfig="D:\SteamLibrary\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg";
+	class DefaultLink
+	{
+		ArrowSize=0;
+	};
+	DefaultLinkColor=6316128;
+	DefaultLinkColorFromSelected=6316287;
+	DefaultLinkColorToSelected=6356832;
+	DefaultLinkUseCustom=1;
+	PZoomLeft=-379.73035;
+	PZoomRight=379.73001;
+	PZoomBottom=82.677429;
+	PZoomTop=-344.88699;
+	Clxs=1032;
+	Clys=581;
+	Aspect=1;
+};
+class Window
+{
+	Flags=0;
+	MaxPosX=-1;
+	MaxPosY=-1;
+	MinPosX=-32000;
+	MinPosY=-32000;
+	Left=104;
+	Top=104;
+	Right=1544;
+	Bottom=857;
+	ShowCmd=1;
+	SplitPos=1050;
+};

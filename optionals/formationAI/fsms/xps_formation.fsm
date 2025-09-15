@@ -1,0 +1,58 @@
+/*%FSM<COMPILE "D:\SteamLibrary\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, xps_formation">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,4346,-11.478699,-177.485596,78.521301,-127.485603,0.000000,"Init"};
+item1[] = {"Move",2,250,-5.519318,-29.719330,84.480698,20.280670,0.000000,"Move"};
+item2[] = {"_",4,218,159.210449,-28.021057,249.210449,21.978943,0.000000,""};
+link0[] = {1,2};
+link1[] = {2,1};
+globals[] = {0.000000,0,0,0,0,640,480,1,6,6316128,1,-363.000000,362.999939,55.192963,-438.147369,855,581,1};
+window[] = {0,-1,-1,-1,-1,961,208,1648,208,1,873};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "xps_formation";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"params [""_unit""];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Move">*/
+                class Move
+                {
+                        name = "Move";
+                        itemno = 1;
+                        init = /*%FSM<STATEINIT""">*/"_leader setDestination expecteddestination _leader;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="Move";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"getUnitState _leader isEqualto ""BUSY"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+        };
+};
+/*%FSM</COMPILE>*/
