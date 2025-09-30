@@ -1,13 +1,34 @@
 /*%FSM<COMPILE "D:\SteamLibrary\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, xps_formation">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Init",0,4346,-11.478699,-177.485596,78.521301,-127.485603,0.000000,"Init"};
-item1[] = {"Move",2,250,-5.519318,-29.719330,84.480698,20.280670,0.000000,"Move"};
-item2[] = {"_",4,218,159.210449,-28.021057,249.210449,21.978943,0.000000,""};
-link0[] = {1,2};
-link1[] = {2,1};
-globals[] = {0.000000,0,0,0,0,640,480,1,6,6316128,1,-363.000000,362.999939,55.192963,-438.147369,855,581,1};
-window[] = {0,-1,-1,-1,-1,961,208,1648,208,1,873};
+item0[] = {"Init",0,4346,-0.944641,-373.801697,89.055359,-323.801605,0.000000,"Init"};
+item1[] = {"Move",2,250,102.572968,214.979828,192.572983,264.979828,0.000000,"Move"};
+item2[] = {"_",4,218,267.302734,216.678101,357.302734,266.678101,0.000000,""};
+item3[] = {"_",8,218,0.426361,-274.669800,90.426361,-224.669815,0.000000,""};
+item4[] = {"Formation_Check",2,250,1.211700,-168.262268,91.211716,-118.262268,0.000000,"Formation" \n "Check"};
+item5[] = {"Not_Custom",8,218,155.066925,-166.173065,245.066925,-116.173073,0.000000,"Not Custom"};
+item6[] = {"Use_Custom",4,218,-161.706757,-163.327820,-71.706757,-113.327820,0.000000,"Use" \n "Custom"};
+item7[] = {"Custom_Formation",2,250,-321.990509,-162.379364,-231.990479,-112.379356,0.000000,"Custom" \n "Formation"};
+item8[] = {"All_Others",8,218,-185.417389,-23.909424,-95.417389,26.090576,0.000000,"All" \n "Others"};
+item9[] = {"Scripted",4,218,61.172943,22.563354,151.172943,72.563354,0.000000,"Scripted"};
+item10[] = {"Stopped",4,218,225.250397,10.233826,315.250397,60.233826,0.000000,"Stopped"};
+item11[] = {"____FAKE____",9,0,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+link0[] = {0,3};
+link1[] = {1,2};
+link2[] = {2,1};
+link3[] = {3,4};
+link4[] = {4,5};
+link5[] = {4,6};
+link6[] = {5,4};
+link7[] = {6,7};
+link8[] = {8,11};
+link9[] = {11,8};
+link10[] = {9,11};
+link11[] = {11,9};
+link12[] = {10,11};
+link13[] = {11,10};
+globals[] = {0.000000,0,0,0,0,640,480,1,14,6316128,1,-507.881683,507.880829,276.741150,-554.078674,786,581,1};
+window[] = {0,-1,-1,-1,-1,935,182,1622,182,1,804};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -19,10 +40,26 @@ class FSM
                 {
                         name = "Init";
                         itemno = 0;
-                        init = /*%FSM<STATEINIT""">*/"params [""_unit""];"/*%FSM</STATEINIT""">*/;
+                        init = /*%FSM<STATEINIT""">*/"params [""_unit""];" \n
+                         "" \n
+                         "private _context = _unit getVariable [""xps_f_context"", " \n
+                         "	createhashmapobject [XPS_typ_Blackboard,[_unit,""xps_f_context""]]" \n
+                         "];" \n
+                         ""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="Formation_Check";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
                         };
                 };
                 /*%FSM</STATE>*/
@@ -43,6 +80,97 @@ class FSM
                                         to="Move";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"getUnitState _leader isEqualto ""BUSY"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Formation_Check">*/
+                class Formation_Check
+                {
+                        name = "Formation_Check";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Use_Custom">*/
+                                class Use_Custom
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="Custom_Formation";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_context get ""IsCustom"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Not_Custom">*/
+                                class Not_Custom
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="Formation_Check";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_unit setdestination expecteddestination _unit;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Custom_Formation">*/
+                class Custom_Formation
+                {
+                        name = "Custom_Formation";
+                        itemno = 7;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "____FAKE____">*/
+                class ____FAKE____
+                {
+                        name = "____FAKE____";
+                        itemno = 11;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Scripted">*/
+                                class Scripted
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="____FAKE____";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Stopped">*/
+                                class Stopped
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="____FAKE____";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "All_Others">*/
+                                class All_Others
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="____FAKE____";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/

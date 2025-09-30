@@ -1,10 +1,6 @@
 params ["_unit",["_isCustom",false,[true]],["_following",objNull,[objNull]],"_formPos","_distance"];
 
-private _eDest = expectedDestination _unit;
-
-if (!_isCustom || {isNull _following}) exitwith {
-_eDest#0;
-};
+if (!_isCustom || {isNull _following}) exitwith {expectedDestination _unit select 0;};
 
 private _lPos = getposATL _following;
 private _relPos = [

@@ -5,17 +5,16 @@ class GraphItems
 	{
 		Flags=4346;
 		BasicText="";
-		Left=-11.478699;
-		Top=-177.4856;
-		Right=78.521301;
-		Bottom=-127.4856;
+		Left=-0.94464099;
+		Top=-373.8017;
+		Right=89.055359;
+		Bottom=-323.80161;
 		BgColor=255;
 		class ItemInfo
 		{
 			Text="Init";
 			lStyle=-842150451;
 			Shape=6;
-			Group=-842150451;
 			FontFace="Arial";
 			FontHeight=10;
 			FontWeight=700;
@@ -24,8 +23,8 @@ class GraphItems
 			ItemType=0;
 			class ItemInfo
 			{
-				Id=1;
-				InitCode="params [""_unit""];";
+				Id=0;
+				InitCode="params [""_unit""];" \n "" \n "private _context = _unit getVariable [""xps_f_context"", " \n "	createhashmapobject [XPS_typ_Blackboard,[_unit,""xps_f_context""]]" \n "];" \n "";
 			};
 		};
 	};
@@ -33,24 +32,23 @@ class GraphItems
 	{
 		Flags=250;
 		BasicText="";
-		Left=-5.5193176;
-		Top=-29.71933;
-		Right=84.480698;
-		Bottom=20.28067;
+		Left=102.57297;
+		Top=214.97983;
+		Right=192.57298;
+		Bottom=264.97983;
 		BgColor=16777215;
 		class ItemInfo
 		{
 			Text="Move";
 			lStyle=-842150451;
-			Group=-842150451;
-			FontFace="Arial";
+			FontFace="";
 			FontHeight=10;
 			FontWeight=0;
 			FontCharSet=0;
 			ItemType=2;
 			class ItemInfo
 			{
-				Id=2;
+				Id=1;
 				InitCode="_leader setDestination expecteddestination _leader;";
 			};
 		};
@@ -59,26 +57,225 @@ class GraphItems
 	{
 		Flags=218;
 		BasicText="";
-		Left=159.21045;
-		Top=-28.021057;
-		Right=249.21045;
-		Bottom=21.978943;
+		Left=267.30273;
+		Top=216.6781;
+		Right=357.30273;
+		Bottom=266.6781;
 		BgColor=65535;
 		class ItemInfo
 		{
 			Text="";
 			lStyle=-842150451;
 			Shape=2;
-			Group=-842150451;
-			FontFace="Arial";
+			FontFace="";
 			FontHeight=10;
 			FontWeight=0;
 			FontCharSet=0;
 			ItemType=4;
 			class ItemInfo
 			{
-				Id=4;
+				Id=2;
 				Condition="getUnitState _leader isEqualto ""BUSY""";
+			};
+		};
+	};
+	class Item3
+	{
+		Flags=218;
+		BasicText="";
+		Left=0.42636099;
+		Top=-274.6698;
+		Right=90.426361;
+		Bottom=-224.66982;
+		BgColor=8421440;
+		class ItemInfo
+		{
+			Text="";
+			lStyle=-842150451;
+			Shape=2;
+			FontFace="";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=8;
+			class ItemInfo
+			{
+				Id=3;
+			};
+		};
+	};
+	class Item4
+	{
+		Flags=250;
+		BasicText="";
+		Left=1.2117;
+		Top=-168.26227;
+		Right=91.211716;
+		Bottom=-118.26227;
+		BgColor=16777215;
+		class ItemInfo
+		{
+			Text="Formation" \n "Check";
+			lStyle=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=2;
+			class ItemInfo
+			{
+				Id=4;
+			};
+		};
+	};
+	class Item5
+	{
+		Flags=218;
+		BasicText="";
+		Left=155.06693;
+		Top=-166.17307;
+		Right=245.06693;
+		Bottom=-116.17307;
+		BgColor=8421440;
+		class ItemInfo
+		{
+			Text="Not Custom";
+			lStyle=-842150451;
+			Shape=2;
+			FontFace="";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=8;
+			class ItemInfo
+			{
+				Id=5;
+				Action="_unit setdestination expecteddestination _unit;";
+			};
+		};
+	};
+	class Item6
+	{
+		Flags=218;
+		BasicText="";
+		Left=-161.70676;
+		Top=-163.32782;
+		Right=-71.706757;
+		Bottom=-113.32782;
+		BgColor=65535;
+		class ItemInfo
+		{
+			Text="Use" \n "Custom";
+			lStyle=-842150451;
+			Shape=2;
+			FontFace="";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=4;
+			class ItemInfo
+			{
+				Id=6;
+				Condition="_context get ""IsCustom""";
+			};
+		};
+	};
+	class Item7
+	{
+		Flags=250;
+		BasicText="";
+		Left=-321.99051;
+		Top=-162.37936;
+		Right=-231.99048;
+		Bottom=-112.37936;
+		BgColor=16777215;
+		class ItemInfo
+		{
+			Text="Custom" \n "Formation";
+			lStyle=-842150451;
+			FontFace="";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=2;
+			class ItemInfo
+			{
+				Id=7;
+			};
+		};
+	};
+	class Item8
+	{
+		Flags=218;
+		BasicText="";
+		Left=-185.41739;
+		Top=-23.909424;
+		Right=-95.417389;
+		Bottom=26.090576;
+		BgColor=8421440;
+		class ItemInfo
+		{
+			Text="All" \n "Others";
+			lStyle=-842150451;
+			Shape=2;
+			FontFace="";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=8;
+			class ItemInfo
+			{
+				Id=8;
+			};
+		};
+	};
+	class Item9
+	{
+		Flags=218;
+		BasicText="";
+		Left=61.172943;
+		Top=22.563354;
+		Right=151.17294;
+		Bottom=72.563354;
+		BgColor=65535;
+		class ItemInfo
+		{
+			Text="Scripted";
+			lStyle=-842150451;
+			Shape=2;
+			FontFace="";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=4;
+			class ItemInfo
+			{
+				Id=9;
+			};
+		};
+	};
+	class Item10
+	{
+		Flags=218;
+		BasicText="";
+		Left=225.2504;
+		Top=10.233826;
+		Right=315.2504;
+		Bottom=60.233826;
+		BgColor=65535;
+		class ItemInfo
+		{
+			Text="Stopped";
+			lStyle=-842150451;
+			Shape=2;
+			FontFace="";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=4;
+			class ItemInfo
+			{
+				Id=10;
 			};
 		};
 	};
@@ -86,6 +283,17 @@ class GraphItems
 class GraphLinks
 {
 	class Link0
+	{
+		From=0;
+		To=3;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link1
 	{
 		From=1;
 		To=2;
@@ -96,10 +304,65 @@ class GraphLinks
 			ArrowSize=0;
 		};
 	};
-	class Link1
+	class Link2
 	{
 		From=2;
 		To=1;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link3
+	{
+		From=3;
+		To=4;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link4
+	{
+		From=4;
+		To=5;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link5
+	{
+		From=4;
+		To=6;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link6
+	{
+		From=5;
+		To=4;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link7
+	{
+		From=6;
+		To=7;
 		Color=6316128;
 		Flags=2;
 		class Extra
@@ -111,7 +374,7 @@ class GraphLinks
 class Globals
 {
 	NextGroupID=1;
-	NextID=6;
+	NextID=14;
 	FSMName="xps_formation";
 	CompileConfig="D:\SteamLibrary\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg";
 	class DefaultLink
@@ -122,11 +385,11 @@ class Globals
 	DefaultLinkColorFromSelected=6316287;
 	DefaultLinkColorToSelected=6356832;
 	DefaultLinkUseCustom=1;
-	PZoomLeft=-363;
-	PZoomRight=362.99994;
-	PZoomBottom=55.192963;
-	PZoomTop=-438.14737;
-	Clxs=855;
+	PZoomLeft=-507.88168;
+	PZoomRight=507.88083;
+	PZoomBottom=276.74115;
+	PZoomTop=-554.07867;
+	Clxs=786;
 	Clys=581;
 	Aspect=1;
 };
@@ -137,10 +400,10 @@ class Window
 	MaxPosY=-1;
 	MinPosX=-1;
 	MinPosY=-1;
-	Left=208;
-	Top=208;
-	Right=1648;
-	Bottom=961;
+	Left=182;
+	Top=182;
+	Right=1622;
+	Bottom=935;
 	ShowCmd=1;
-	SplitPos=873;
+	SplitPos=804;
 };
