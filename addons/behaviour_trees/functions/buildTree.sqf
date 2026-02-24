@@ -12,26 +12,26 @@ Description:
 	* Each Node is represented as a two element array [ NODE_TYPE_VAR, [ ...children...] ]
 		* where NODE_TYPE_VAR is a <HashmapObject> type definition 
 	* The children are a multidimensional array with each child as a two element array as above
-	* If a node has no children, the second element of the child must be represented as an empty array
+	* If a node has no children, the second element can be omitted
 	
 	For example:
 	---text
 		[
 			RootNode,
 			[
-				[ChildA,[]],
+				[ChildA],
 				[ChildB, 
 					[
-						[ChildC,[]],
-						[ChildD,[]]
+						[ChildC],
+						[ChildD]
 					]
 				],
 				[ChildE,
-					[ChildF,[]],
+					[ChildF],
 					[ChildG,
 						[
-							[ChildH,[]],
-							[ChildI,[]]
+							[ChildH],
+							[ChildI]
 						]
 					]
 				]
@@ -56,7 +56,7 @@ Authors:
 		Using the example structure in the description, it would appear like so:
 
 		--- Code
-		private _treeDef = [RootNode,[[ChildA,[]],[ChildB,[[ChildC,[]],[ChildD,[]]]],[ChildE,[ChildF,[]],[ChildG,[[ChildH,[]],[ChildI,[]]]]]]];
+		private _treeDef = [RootNode,[[ChildA],[ChildB,[[ChildC],[ChildD]]],[ChildE,[ChildF],[ChildG,[[ChildH],[ChildI]]]]]];
 		private _tree = [_treeDef] call XPS_BT_fnc_buildTree;
 		---
 		This results in _tree as a <hashmapobject> structured as so:
